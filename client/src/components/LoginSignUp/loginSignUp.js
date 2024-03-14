@@ -5,9 +5,13 @@ import regImage from './img/register.svg';
 import logo from './img/beaware_logo.png';
 import {firebaseApp} from './firebase.js';
 import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
 // import 'firebase/firestore';
 
 function SignInSignUpForm() {
+      const navigate = useNavigate(); // Access the navigate function
+
   const [isSignUpMode, setIsSignUpMode] = useState(false);
 
   const handleSignUpMode = async () => {
@@ -16,7 +20,7 @@ function SignInSignUpForm() {
 
   const SignUpHit = async () => {
     // event.preventDefault(); // Prevent form submission
-    console.log("hello");
+    //console.log("hello");
   
     // Get form values
     const username = document.getElementById('username1').value;
@@ -43,6 +47,9 @@ function SignInSignUpForm() {
       //setIsSignUpMode(true);
   
       console.log("User created successfully!");
+            setIsSignUpMode(false)
+
+      //navigate('/');
     } catch (error) {
       console.error("Error creating user:", error.message);
     }
@@ -50,14 +57,21 @@ function SignInSignUpForm() {
 
   const loginHit = async () => {
     const username = document.getElementById("username").value;
+    console.log(username);
     const password = document.getElementById("password").value;
-  
+    console.log(password);
+    //const navigate = useNavigate(); // Access the navigate function
+
+
     try {
       // Sign in user with email and password
       const userCredential = await firebaseApp.auth().signInWithEmailAndPassword(username, password);
-      
-      // Optionally, you can do something after successful login, like redirecting the user to another page
+      console.log(userCredential.user)
       console.log("User logged in successfully:", userCredential.user);
+      navigate('/dashboard');
+
+
+
     } catch (error) {
       // Handle login errors
       console.error("Error logging in:", error.message);
@@ -79,7 +93,7 @@ function SignInSignUpForm() {
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" id='username'/>
+              <input type="text" placeholder="Email" id='username'/>
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>

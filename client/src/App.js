@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css'; // Import your CSS file
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Stream from './pages/Stream';
+// import Stream from './pages/Stream';
 
 
 import { useState } from 'react';
@@ -12,6 +12,7 @@ import SignInSignUpForm from './components/LoginSignUp/loginSignUp'
 import Dashboard from './components/dashboard/dashboard';
 import ForgotPassword from './components/forgotPassword/forgotPassword'
 import SetPassword from './components/forgotPassword/setPassword'
+import Stream from './components/stream/stream';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons';

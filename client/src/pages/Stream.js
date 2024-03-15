@@ -24,7 +24,7 @@ const Stream = () => {
               </button>
               <button className={styles.linkInstructions1}>
                 <div className={styles.linkInstructionsItem} />
-                <b className={styles.url}>URL</b>
+                <b className={styles.url}>URL 1</b>
               </button>
             </div>
           </section>

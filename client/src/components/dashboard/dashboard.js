@@ -2,6 +2,7 @@ import './dashboard-style.css';
 import bewareLogo from './src/img/beaware.png'
 import React, { useState, useEffect } from 'react';
 import Apng from './src/img/A.png';
+import {firebaseApp} from '../LoginSignUp/firebase.js';
 import GenerateStreamIcon from './src/img/Generate Stream Icon.png';
 import UndrawBusinessman from './src/img/undraw_businessman_e7v0.svg';
 import Vector from './src/img/Vector.svg'
@@ -22,11 +23,23 @@ const Dashboard = () => {
     }
   }, []);
 
+  const handleSignOut = () => {
+    firebaseApp.auth().signOut().then(() => {
+      // Sign-out successful.
+      console.log("User signed out successfully.");
+    }).catch((error) => {
+      // An error happened.
+      console.error("Error signing out:", error);
+    });
+    localStorage.removeItem("userData");
+  }
+
+
   return (
     <div id="dashboardMain">
       <div id="topBar">
         <img src={bewareLogo} alt="beaware logo" />
-        <button>Sign Out</button>
+        <button onClick={handleSignOut}>Sign Out</button>
       </div>
 
       <div id="main">
